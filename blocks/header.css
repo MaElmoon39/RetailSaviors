@@ -6,3 +6,9 @@
   display: flex;
   justify-content: center;
 }
+
+.header__title {
+  font-size: 48px;
+  font-weight: 700;
+  -webkit-text-stroke: 1px #ff9506;
+}

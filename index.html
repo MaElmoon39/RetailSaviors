@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Página web interactiva para segmentación de clientes"
-        />
-        <meta name="author" content="Team RetailSavior WD María Tortello" />
-        <meta name="keywords" content="Retail, segmentación, python, TripleTen, Hackathon, Team RetailSavior" />
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="Página web interactiva para segmentación de clientes"
+      />
+      <meta name="author" content="Team RetailSavior WD María Tortello" />
+      <meta name="keywords" content="Retail, segmentación, python, TripleTen, Hackathon, Team RetailSavior" />
 
-        <title>Retail Savior</title>
+      <title>Segmentación clientes Retail</title>
 
-        <link rel="stylesheet" href="pages/index.css" />
-      </head>
+      <link rel="stylesheet" href="pages/index.css" />
+    </head>
 <body>
     <div class="page">
-        <header class="header">
-            <h1>Segmentación de Clientes - Retail</h1>
-        </header>
+      <header class="header">
+          <h1 class="header__title">Segmentación de Clientes - Retail</h1>
+      </header>
 
-        <main></main>
+      <main class="content">
+        <h2 class="content__intro-title">Introducción</h2>
+        <p class="content__intro-text">En un mundo donde las empresas dependen cada vez más de los datos para tomar decisiones estratégicas, la capacidad de segmentar clientes de manera efectiva se vuelve crucial. La segmentación de clientes permite a las empresas personalizar sus estrategias de marketing, mejorar la retención de éstos y maximizar su valor a lo largo del tiempo.</p>
 
-        <footer class="footer">
-            <p class="footer__copyright">&copy; 2024. 💚🛒Team Retail Savior🛒</p>
-        </footer>
+        <p class="content__intro-text">Esta página web se crea  como una alternativa interactiva que permitirá a los científicos de datos realizar análisis de segmentación de clientes utilizando el modelo RFM (Recencia, Frecuencia, Valor Monetario). La aplicación proporcionará herramientas para cargar datos, realizar análisis exploratorio y visualizar resultados de segmentación mediante gráficos interactivos.</p>
+
+        <section class="upload-section">
+          <p class="upload-section__title">Para empezar, pulsa el siguiente botón para subir tu archivo en formato ".csv"</p>
+          <button class="upload-section__btn" id="loadDataButton" type="button">Cargar Datos</button>
+        </section>
+        <section class="charts-section">
+            <h2 class="charts-section__title">Visualización de Datos</h2>
+            <canvas class="charts-section__canvas" id="rfmChart"></canvas>
+        </section>
+      </main>
+
+      <footer class="footer">
+          <p class="footer__copyright">&copy; 2024. 💚 🛒Team Retail Savior🛒</p>
+      </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="pages/index.js"></script>
 </body>
 </html>
