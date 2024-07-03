@@ -1,5 +1,5 @@
-# RetailSaviors
-Retail Challenge Hackathon
+# Retail Challenge Hackathon
+Team Retail Saviors
 
 El primer hackathon de 2024 está pensado para estudiantes de sprints avanzados de los bootcamps Data Science, Data Analyst y Web Developer. El challenge consiste en hacer análisis estadístico en segmentación de clientes que permita facilitar el filtrado de un universo de compradores a audiencias que realmente pueden convertirse en compradores y generar leads de ventas (😐 lo sé, tampoco entendí); es decir, analizar información a partir de metodologías de segmentación utilizada actualmente en compañías del sector de retail, usando estadística descriptiva para resolver las problemáticas planteadas en el challenge (tomado de la guía Retail challenge 😊).
 
