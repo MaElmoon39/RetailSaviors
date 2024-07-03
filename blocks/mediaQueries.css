@@ -21,15 +21,14 @@
     text-align: center;
   }
 
-  .content__intro-title, .charts-section__title {
+  .content__subtitle, .charts-section__title {
     font-size: 33px;
     font-weight: 500;
     margin-top: 20px;
   }
 
-  .content__intro-text, .upload-section__title {
+  .content__paragraph, .upload-section__text {
     font-size: 16px;
-    text-align: justify;
   }
 
   .upload-section__btn {
