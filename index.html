@@ -28,16 +28,66 @@
 
         <section class="upload-section">
           <p class="upload-section__text">Para empezar, pulsa el siguiente botón para subir tu archivo en formato ".csv"</p>
-          <input type="file" class="upload-section__file" accept=".json" required>
+          <!-- <input type="file" class="upload-section__file" accept=".json" required> -->
           <button class="upload-section__btn" id="loadDataButton" type="button">Cargar Datos</button>
         </section>
         <section class="charts-section">
-            <h2 class="charts-section__title">Visualización de Datos</h2>
-            <canvas class="charts-section__canvas" id="rfmChart"></canvas>
+          <h2 class="charts-section__title">Visualización de Datos</h2>
+          <div class="canvas canvas__item">
+            <h2 class="filter1">Filtro a</h2>
+            <h2 class="filter2">Filtro b</h2>
+            <h2 class="filter3">Filtro c</h2>
+
+            <section class="sidebar-left canvas__item">
+                <h2 class="title">
+                  Dato
+                </h2>
+            </section>
+            <section class="sidebar-center canvas__item">
+                <h2 class="title">
+                    Gráfica 1
+                </h2>
+            </section>
+            <section class="sidebar-right canvas__item">
+                <h2 class="title">
+                    Gráfica 2
+                </h2>
+            </section>
+
+            <section class="midbar-left canvas__item">
+                <h2 class="title">
+                    Gráfica 3
+                </h2>
+            </section>
+            <section class="midbar-center canvas__item">
+                <h2 class="title">
+                    Gráfica 4
+                </h2>
+            </section>
+
+            <section class="text canvas__item">
+                <h2>Texto conclusiones</h2>
+            </section>
+
+            <section class="bar-left canvas__item">
+                <h2 class="title">
+                    Gráfica 5
+                </h2>
+            </section>
+            <section class="bar-center canvas__item">
+                <h2 class="title">
+                    Gráfica 6
+                </h2>
+            </section>
+          </div>
+          <canvas class="charts-section__canvas" id="rfmChart">
+
+          </canvas>
         </section>
 
-        <h2 class="content__subtitle">Conclusiones</h2>
+       <!--  <h2 class="content__subtitle">Conclusiones</h2>
         <p class="content__paragraph">En un mundo donde las empresas dependen cada vez más de los datos para tomar decisiones estratégicas, la capacidad de segmentar clientes de manera efectiva se vuelve crucial. La segmentación de clientes permite a las empresas personalizar sus estrategias de marketing, mejorar la retención de éstos y maximizar su valor a lo largo del tiempo.</p>
+       -->
       </main>
 
       <footer class="footer">
