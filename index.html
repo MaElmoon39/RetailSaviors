@@ -33,55 +33,9 @@
         </section>
         <section class="charts-section">
           <h2 class="charts-section__title">Visualización de Datos</h2>
-          <div class="canvas canvas__item">
-            <h2 class="filter1">Filtro a</h2>
-            <h2 class="filter2">Filtro b</h2>
-            <h2 class="filter3">Filtro c</h2>
+          <section class="canvas"></section>
 
-            <section class="sidebar-left canvas__item">
-                <h2 class="title">
-                  Dato
-                </h2>
-            </section>
-            <section class="sidebar-center canvas__item">
-                <h2 class="title">
-                    Gráfica 1
-                </h2>
-            </section>
-            <section class="sidebar-right canvas__item">
-                <h2 class="title">
-                    Gráfica 2
-                </h2>
-            </section>
-
-            <section class="midbar-left canvas__item">
-                <h2 class="title">
-                    Gráfica 3
-                </h2>
-            </section>
-            <section class="midbar-center canvas__item">
-                <h2 class="title">
-                    Gráfica 4
-                </h2>
-            </section>
-
-            <section class="text canvas__item">
-                <h2>Texto conclusiones</h2>
-            </section>
-
-            <section class="bar-left canvas__item">
-                <h2 class="title">
-                    Gráfica 5
-                </h2>
-            </section>
-            <section class="bar-center canvas__item">
-                <h2 class="title">
-                    Gráfica 6
-                </h2>
-            </section>
-          </div>
           <canvas class="charts-section__canvas" id="rfmChart">
-
           </canvas>
         </section>
 
@@ -94,6 +48,56 @@
           <p class="footer__copyright">&copy; 2024. 💚 🛒Team Retail Savior🛒</p>
       </footer>
     </div>
+
+    <template id="board-template">
+      <div class="canvas canvas__items">
+        <h2 class="canvas__filter1 canvas__item">Filtro a</h2>
+        <h2 class="canvas__filter2 canvas__item">Filtro b</h2>
+        <h2 class="canvas__filter3 canvas__item">Filtro c</h2>
+
+        <section class="canvas__graph-left canvas__item">
+            <h2 class="title">
+              Dato
+            </h2>
+        </section>
+        <section class="canvas__graph-center canvas__item">
+            <h2 class="title">
+                Gráfica 1
+            </h2>
+        </section>
+        <section class="canvas__graph-right canvas__item">
+            <h2 class="title">
+                Gráfica 2
+            </h2>
+        </section>
+
+        <section class="canvas__midgraph-left canvas__item">
+            <h2 class="title">
+                Gráfica 3
+            </h2>
+        </section>
+        <section class="canvas__midgraph-center canvas__item">
+            <h2 class="title">
+                Gráfica 4
+            </h2>
+        </section>
+
+        <section class="canvas__text canvas__item">
+            <h2>Texto conclusiones</h2>
+        </section>
+
+        <section class="canvas__bar-left canvas__item">
+            <h2 class="title">
+                Gráfica 5
+            </h2>
+        </section>
+        <section class="canvas__bar-center canvas__item">
+            <h2 class="title">
+                Gráfica 6
+            </h2>
+        </section>
+      </div>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="pages/index.js"></script>

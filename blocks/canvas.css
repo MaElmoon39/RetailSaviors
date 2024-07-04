@@ -24,54 +24,54 @@
     border-radius: 14px;
 }
 
-.filter1 {
+.canvas__filter1 {
     grid-area: filter-left;
 }
 
-.filter2 {
+.canvas__filter2 {
     grid-area: filter-center;
 }
 
-.filter3 {
+.canvas__filter3 {
     grid-area: filter-right;
 }
 
-.sidebar-left {
+.canvas__graph-left {
     grid-area: sidebar-left;
     background: #e38408;
 }
 
-.sidebar-center {
+.canvas__graph-center {
     grid-area: sidebar-center;
     background: #e38408;
 }
 
-.sidebar-right {
+.canvas__graph-right {
     grid-area: sidebar-right;
     background: #e38408;
 }
 
-.midbar-left {
+.canvas__midgraph-left {
     grid-area: midbar-left;
     background: #3708e3;
 }
 
-.midbar-center {
+.canvas__midgraph-center {
     grid-area: midbar-center;
     background: #3708e3;
 }
 
-.text {
+.canvas__text {
     grid-area: main;
     background: #db67d3;
 }
 
-.bar-left {
+.canvas__bar-left {
     grid-area: bar-left;
     background: #1cc535;
 }
 
-.bar-center {
+.canvas__bar-center {
     grid-area: bar-center;
     background: #1cc535;
 }
