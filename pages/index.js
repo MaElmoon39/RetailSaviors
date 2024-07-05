@@ -17,6 +17,11 @@ new Chart(ctxGraphCenter, {
     }]
   },
   options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      }},
     scales: {
       y: {
         beginAtZero: true
@@ -33,10 +38,16 @@ new Chart(ctxGraphRight, {
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
+      borderWidth: 1,
+      borderRadius: 7
     }]
   },
   options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      }},
     scales: {
       y: {
         beginAtZero: true
