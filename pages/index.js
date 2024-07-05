@@ -23,13 +23,26 @@ fetch('json/df_clean.json')
 .catch((error) => console.error("Error al cargar datos:", error));
 
 function loadData(dataJson, plotType) {
+
+  const transformData = [];
+  for(const i of dataJson){
+    const entry = transformData.find(item => item.continent == i.continent);
+    if(entry){
+      entry.total+=i.total
+    }else{
+      transformData.push({total: i.total, continent: i.continent})
+    }
+  }
+
+  console.log(transformData)
+
   new Chart(ctxGraphRight, {
     type: plotType,
     data: {
-      labels: dataJson.map(row => row.month),
+      labels: transformData.map(row => row.continent),
       datasets: [{
         label: 'Continente',
-        data: dataJson.map(row => row.total),
+        data: transformData.map(row => row.total),
         backgroundColor: [
       '#EF6A32',
       '#FFF6E9',
