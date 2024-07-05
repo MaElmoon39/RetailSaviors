@@ -11,6 +11,12 @@ El objetivo es desarrollar una aplicación web interactiva que permita a los cie
 
 El trabajo se compondrá de un notebook donde se realiza el preprocesamiento de los datos 🧰 aplicando técnicas para tratar números duplicados, valores nulos y creación de nuevas columnas; además, realizar un EDA 📊 que permita obtener datos relevantes como cantidad de compras por mes, por horario, por día, entre otros. Finalmente, se realiza un modelo no supervisado (K-means)🤖 con la intención de crear segmentos de clientes para poder retenerlos o cautivarlos mediante estrategias de marketing.
 
+# Entregables
+Los documentos a entregar son los siguientes:
+- Jupyter Notebook con el código del EDA y los resultados del proyecto. Se puede encontrar en la carpeta notebooks, con el nombre 'segmentacion_clients_ipynb' o en el enlace: [Clic aquí](https://github.com/MaElmoon39/RetailSaviors/blob/main/notebooks/segmentacion_clientes.ipynb)
+- Presentación con las visualizaciones gráficas de los resultados obtenidos. En la carpeta notebooks/Segmentacion Clientes-Retail Saviors.pdf o en el enlace: [Clic aquí](https://github.com/MaElmoon39/RetailSaviors/blob/main/notebooks/Segmentacion%20Clientes-Retail%20Saviors.pdf)
+- Las visualizaciones por medio de una página web. Realizada a través de github pages, se puede acceder haciendo [clic aquí.](https://maelmoon39.github.io/RetailSaviors/)
+
 # Conclusión 
 Se obtuvo una tabla con 4 segmentos los cuales se muestran a continuación:
 
