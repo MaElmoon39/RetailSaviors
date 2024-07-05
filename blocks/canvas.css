@@ -22,8 +22,9 @@
 
 .canvas__text-conclusions {
   font-size: 14px;
-  text-align: justify;
+  text-align: end;
   padding: 8px;
+  line-height: 17px;
 }
 
 .canvas__filter1, .canvas__filter2, .canvas__filter3{
@@ -36,6 +37,9 @@
     -moz-border-radius: 14px;
     border-radius: 14px;
     border: 1px solid #0000007b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .canvas__filter1 {
