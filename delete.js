@@ -218,6 +218,82 @@ function loadDataRFM() {
 //Gráfico 1 Promedio de ventas
 const ctxGraphCenterPlot = new Chart(ctxGraphCenter, doughnutConfig);
 
+function loadDataDf() {
+  fetch('json/df_clean.json')
+  .then(function(response){
+    if(response.ok == true){
+      return response.json();
+    }
+  })
+  .then((dataInfo) => {
+    const continentInfo = Object.keys(dataInfo.continent);
+    const totalInfo = dataInfo.map(row => row.total);
+    const doughnutConfig = {
+      type: 'doughnut',
+      data: {
+        labels: continentInfo,
+        datasets: [{
+          label: 'Continente',
+          data: totalInfo,
+          backgroundColor: [
+        '#EF6A32',
+        '#FFF6E9',
+        '#36A2EB',
+        '#017351',
+        '#FBBF45',
+        '#B1AFFF',
+        '#A12A5E',
+        '#03C383',
+        '#26294A',
+        '#AAD962',
+        '#FF1A68',
+        '#01545A',
+        '#ED0345',
+        '#710162',
+        '#110141'
+
+      ],
+      borderColor: [
+        '#EF6A32',
+        '#FFF6E9',
+        '#36A2EB',
+        '#017351',
+        '#FBBF45',
+        '#B1AFFF',
+        '#A12A5E',
+        '#03C383',
+        '#26294A',
+        '#AAD962',
+        '#FF1A68',
+        '#01545A',
+        '#ED0345',
+        '#710162',
+        '#110141'
+      ],
+      borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }},
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    const promVentas = new Chart(ctxGraphCenter, doughnutConfig);
+    return promVentas;
+  }
+)
+  .catch((error) => console.error("Error al cargar datos:", error));
+}
+
 //Gráfico 2 Gasto total anual (USD)
 
 function viewChart(dataJson) {
