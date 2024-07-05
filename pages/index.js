@@ -1,76 +1,162 @@
-//Cargar archivo .csv externo
-/* document.querySelector('.upload-section__file').addEventListener('change', handleFileUpload);
-document.querySelector('.upload-section__btn').addEventListener('click', loadData);
+const ctxGraphCenter = document.querySelector("#canvas__graph-center");
+const ctxGraphRight = document.querySelector("#canvas__graph-right");
+const ctxMidgraphLeft = document.querySelector("#canvas__midgraph-left");
+const ctxMidgraphCenter = document.querySelector("#canvas__midgraph-center");
+const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
+const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
 
-function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const data = JSON.parse(e.target.result);
-            renderChart(data);
-        };
-        reader.readAsText(file);
+//Gráfico 1 Promedio de ventas
+new Chart(ctxGraphCenter, {
+  type: 'doughnut',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
     }
-} */
+  }
+});
 
-document.querySelector('#loadDataButton').addEventListener('click', loadData);
+//Gráfico 2 Gasto total anual (USD)
+new Chart(ctxGraphRight, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
 
-/* function loadData() {
-    fetch('data/dataTest.json')
-        .then(response => response.json())
-        .then(data => renderChart(data))
-        .catch(error => console.error('Error al cargar los datos:', error));
-} */
+//Gráfico 3 Cantidad total de usuarios
+new Chart(ctxMidgraphLeft, {
+  type: 'scatter',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: ''
+      }
+    }
+  }
+});
 
-function loadData() {
-  fetch('json/rfm_df.json')
-      .then(response => response.json())
-      .then(data => renderChart(data))
-      .catch(error => console.error('Error al cargar los datos:', error));
+//Gráfico 4 Segmentos por región
+new Chart(ctxMidgraphCenter, {
+  type: 'polarArea',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+//Gráfico 5 Ventas por continente (USD)
+new Chart(ctxBottmLeft, {
+  type: 'radar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+//Mapamundi
+fetch('https://unpkg.com/world-atlas/countries-50m.json').then((r) => r.json()).then((data) => {
+  const countries = ChartGeo.topojson.feature(data, data.objects.countries).features;
+
+const chart = new Chart(ctxBottmLeft.getContext("2d"), {
+type: 'choropleth',
+data: {
+  labels: countries.map((d) => d.properties.name),
+  datasets: [{
+    label: 'Countries',
+    data: countries.map((d) => ({feature: d, value: Math.random()})),
+  }]
+},
+options: {
+  showOutline: true,
+  showGraticule: true,
+  plugins: {
+    legend: {
+      display: false
+    },
+  },
+  scales: {
+    projection: {
+      axis: 'x',
+      projection: 'equalEarth'
+    }
+  }
 }
+});
+});
 
-function renderChart(rfmData) {
-    const ctx = document.querySelector('canvas').getContext('2d');
-    const labels = rfmData.map(customer => `Cliente ${customer.customerID}`);
-    const recencyData = rfmData.map(customer => customer.recency);
-    const frequencyData = rfmData.map(customer => customer.frequency);
-    const monetaryData = rfmData.map(customer => customer.monetary);
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Recency',
-                    data: recencyData,
-                    backgroundColor: 'rgba(0, 51, 0, 1)',
-                    borderColor: 'rgba(0, 51, 0, 0.4)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Frequency',
-                    data: frequencyData,
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Monetary',
-                    data: monetaryData,
-                    backgroundColor: 'rgba(255, 128, 76, 1)',
-                    borderColor: 'rgba(255, 128, 76, .4)',
-                    borderWidth: 1
-                }
-            ]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
+//Gráfico 6 Segmentos por continente
+new Chart(ctxBottmCenter, {
+  type: 'polarArea',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});

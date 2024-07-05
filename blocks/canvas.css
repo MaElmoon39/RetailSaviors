@@ -18,10 +18,22 @@
     box-sizing: border-box;
 }
 
+.title {
+  font-size: 18px;
+  text-align: center;
+}
+
+.canvas__text-conclusions {
+  font-size: 16px;
+  text-align: justify;
+  padding: 10px;
+}
+
 .canvas__item {
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
     border-radius: 14px;
+    border: 1px solid #0000007b;
 }
 
 .canvas__filter1 {
@@ -38,40 +50,32 @@
 
 .canvas__graph-left {
     grid-area: sidebar-left;
-    background: #e38408;
 }
 
 .canvas__graph-center {
     grid-area: sidebar-center;
-    background: #e38408;
 }
 
 .canvas__graph-right {
     grid-area: sidebar-right;
-    background: #e38408;
 }
 
 .canvas__midgraph-left {
     grid-area: midbar-left;
-    background: #3708e3;
 }
 
 .canvas__midgraph-center {
     grid-area: midbar-center;
-    background: #3708e3;
 }
 
 .canvas__text {
     grid-area: main;
-    background: #db67d3;
 }
 
-.canvas__bar-left {
+.canvas__bottm-left {
     grid-area: bar-left;
-    background: #1cc535;
 }
 
-.canvas__bar-center {
+.canvas__bottm-center {
     grid-area: bar-center;
-    background: #1cc535;
 }
