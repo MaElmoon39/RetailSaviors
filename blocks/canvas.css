@@ -29,6 +29,11 @@
   padding: 10px;
 }
 
+.canvas__filter1, .canvas__filter2, .canvas__filter3{
+  height: 50px;
+  text-align: center;
+}
+
 .canvas__item {
     -webkit-border-radius: 14px;
     -moz-border-radius: 14px;
