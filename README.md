@@ -35,6 +35,7 @@ En donde:
 
 ## Este proyecto ha sido elaborado por:
 Equipo #3 - Retail Saviors
+
 Data Analyst: Asael Espinoza Bigurra [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AsaelEB) [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()   
 Data Analyst: Maria Camila Mejia Paipa [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]( https://github.com/jhonsamuel10) [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maria-mejia-p/)   
 Data Analyst: Leo Gracia [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LeoGracia17) [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leogracia21/)   
