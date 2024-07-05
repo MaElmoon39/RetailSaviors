@@ -22,8 +22,6 @@ const bgColorGraph = [
   "#110141",
 ];
 document.querySelector("#loadDataButton").addEventListener("click", loadDataDf);
-//document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
-//document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
 
 function loadDataDf() {
   //Gráfico 1 Cantidad total de usuarios
