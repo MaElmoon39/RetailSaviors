@@ -4,13 +4,12 @@
     max-width: 90vw;
     min-height: calc(100vh - 72px);
     grid-template-columns: repeat(2, 1fr) 300px;
-    grid-template-rows: 50px repeat(3, 1fr);
+    grid-template-rows: 50px repeat(2, 1fr);
     grid-gap: 14px 20px;
     grid-template-areas:
       "filter-left filter-center filter-right"
       "sidebar-left sidebar-center sidebar-right"
-      "midbar-left midbar-center main"
-      "bar-left bar-center main";
+      "midbar-left midbar-center main";
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -22,9 +21,9 @@
 }
 
 .canvas__text-conclusions {
-  font-size: 16px;
+  font-size: 14px;
   text-align: justify;
-  padding: 10px;
+  padding: 8px;
 }
 
 .canvas__filter1, .canvas__filter2, .canvas__filter3{
@@ -73,12 +72,4 @@
 
 .canvas__text {
     grid-area: main;
-}
-
-.canvas__bottm-left {
-    grid-area: bar-left;
-}
-
-.canvas__bottm-center {
-    grid-area: bar-center;
 }

@@ -1,9 +1,8 @@
+const ctxGraphLeft = document.querySelector("#canvas__graph-left");
 const ctxGraphCenter = document.querySelector("#canvas__graph-center");
 const ctxGraphRight = document.querySelector("#canvas__graph-right");
 const ctxMidgraphLeft = document.querySelector("#canvas__midgraph-left");
 const ctxMidgraphCenter = document.querySelector("#canvas__midgraph-center");
-const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
-const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
 
 const bgColorGraph = [
   '#EF6A32',  '#FFF6E9',  '#36A2EB',  '#017351',  '#FBBF45',  '#B1AFFF',
@@ -14,7 +13,7 @@ const bgColorGraph = [
 //document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
 //document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
 
-//Gráfico 1 Promedio de ventas por continente
+//Gráfico 1 Cantidad total de usuarios
 fetch('json/df_clean.json')
 .then(function(response){
   if(response.ok === true){
@@ -22,11 +21,62 @@ fetch('json/df_clean.json')
   }
 })
 .then(function(data){
-  loadDataPlot1(data, 'doughnut');
+  loadDataPlot1(data, 'scatter');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
 function loadDataPlot1(dataJson, plotType) {
+
+  const transformData = [];
+  for(const i of dataJson){
+    const entry = transformData.find(item => item.continent == i.continent);
+    if(entry){
+      entry.total+=i.total
+    }else{
+      transformData.push({total: i.total, continent: i.continent})
+    }
+  }
+
+  new Chart(ctxGraphLeft, {
+    type: plotType,
+    data: {
+      labels: transformData.map(row => row.continent),
+      datasets: [{
+        label: 'Continente',
+        data: transformData.map(row => row.total),
+        backgroundColor: bgColorGraph,
+        borderColor: bgColorGraph,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        }},
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+//Gráfico 2 Promedio de ventas por continente
+fetch('json/df_clean.json')
+.then(function(response){
+  if(response.ok === true){
+    return response.json();
+  }
+})
+.then(function(data){
+  loadDataPlot2(data, 'doughnut');
+})
+.catch((error) => console.error("Error al cargar datos:", error));
+
+function loadDataPlot2(dataJson, plotType) {
 
   const transformData = [];
   let quant = 0;
@@ -65,7 +115,7 @@ function loadDataPlot1(dataJson, plotType) {
   });
 }
 
-//Gráfico 2 Gasto total anual (USD), df_clean json file
+//Gráfico 3 Gasto total anual (USD), df_clean json file
 fetch('json/df_clean.json')
 .then(function(response){
   if(response.ok === true){
@@ -73,11 +123,11 @@ fetch('json/df_clean.json')
   }
 })
 .then(function(data){
-  loadDataPlot2(data, 'doughnut');
+  loadDataPlot3(data, 'doughnut');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
-function loadDataPlot2(dataJson, plotType) {
+function loadDataPlot3(dataJson, plotType) {
 
   const transformData = [];
   for(const i of dataJson){
@@ -116,41 +166,51 @@ function loadDataPlot2(dataJson, plotType) {
   });
 }
 
-//Gráfico 3 Cantidad total de usuarios
-fetch('json/df_clean.json')
+//Gráfico 4 Segmentos por nivel de cliente
+fetch('json/segmentation_df.json')
 .then(function(response){
   if(response.ok === true){
     return response.json();
   }
 })
 .then(function(data){
-  loadDataPlot3(data, 'scatter');
+  loadDataPlot4(data, 'bar');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
-function loadDataPlot3(dataJson, plotType) {
-
-  const transformData = [];
-  for(const i of dataJson){
-    const entry = transformData.find(item => item.continent == i.continent);
-    if(entry){
-      entry.total+=i.total
-    }else{
-      transformData.push({total: i.total, continent: i.continent})
-    }
-  }
+function loadDataPlot4(dataJson, plotType) {
+  const labelsPlot = dataJson.map(customer => `${customer.cluster_meaning}`);
+  const recencyData = dataJson.map(customer => customer.recency);
+  const frequencyData = dataJson.map(customer => customer.frequency);
+  const monetaryData = dataJson.map(customer => customer.monetary);
 
   new Chart(ctxMidgraphLeft, {
     type: plotType,
     data: {
-      labels: transformData.map(row => row.continent),
-      datasets: [{
-        label: 'Continente',
-        data: transformData.map(row => row.total),
-        backgroundColor: bgColorGraph,
-        borderColor: bgColorGraph,
-        borderWidth: 1
-      }]
+      labels: labelsPlot,
+      datasets: [
+        {
+          label: 'Recency',
+          data: recencyData,
+          backgroundColor: 'rgba(238, 78, 78, 0.5)',
+          borderColor: 'rgba(238, 78, 78, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Frequency',
+          data: frequencyData,
+          backgroundColor: 'rgba(255, 199, 0, 0.5)',
+          borderColor: 'rgb(255, 199, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Monetary',
+          data: monetaryData,
+          backgroundColor: 'rgb(33, 156, 144, 0.5)',
+          borderColor: 'rgb(33, 156, 144, 1)',
+          borderWidth: 1
+        }
+    ]
     },
     options: {
       responsive: true,
@@ -167,7 +227,7 @@ function loadDataPlot3(dataJson, plotType) {
   });
 }
 
-//Gráfico 4 Segmentos por continente
+//Gráfico 5 Segmentos por continente
 fetch('json/rfm_table.json')
 .then(function(response){
   if(response.ok === true){
@@ -175,11 +235,11 @@ fetch('json/rfm_table.json')
   }
 })
 .then(function(data){
-  loadDataPlot4(data, 'bar');
+  loadDataPlot5(data, 'bar');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
-function loadDataPlot4(dataJson, plotType) {
+function loadDataPlot5(dataJson, plotType) {
   const recencyData = dataJson.map(customer => customer.recency);
   const frequencyData = dataJson.map(customer => customer.frequency);
   const monetaryData = dataJson.map(customer => customer.monetary);
@@ -218,70 +278,6 @@ function loadDataPlot4(dataJson, plotType) {
           data: monetaryData,
           backgroundColor: 'rgba(255, 199, 237, 0.3)',
           borderColor: 'rgba(255, 199, 237, 1)',
-          borderWidth: 1
-        }
-    ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        }},
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-//Gráfico 5 Ventas por continente (USD)*** cambiar a choroplet
-
-
-//Gráfico 6 Segmentos por nivel de cliente
-fetch('json/segmentation_df.json')
-.then(function(response){
-  if(response.ok === true){
-    return response.json();
-  }
-})
-.then(function(data){
-  loadDataPlot6(data, 'bar');
-})
-.catch((error) => console.error("Error al cargar datos:", error));
-
-function loadDataPlot6(dataJson, plotType) {
-  const labelsPlot = dataJson.map(customer => `${customer.cluster_meaning}`);
-  const recencyData = dataJson.map(customer => customer.recency);
-  const frequencyData = dataJson.map(customer => customer.frequency);
-  const monetaryData = dataJson.map(customer => customer.monetary);
-
-  new Chart(ctxBottmCenter, {
-    type: plotType,
-    data: {
-      labels: labelsPlot,
-      datasets: [
-        {
-          label: 'Recency',
-          data: recencyData,
-          backgroundColor: 'rgba(238, 78, 78, 0.5)',
-          borderColor: 'rgba(238, 78, 78, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Frequency',
-          data: frequencyData,
-          backgroundColor: 'rgba(255, 199, 0, 0.5)',
-          borderColor: 'rgb(255, 199, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Monetary',
-          data: monetaryData,
-          backgroundColor: 'rgb(33, 156, 144, 0.5)',
-          borderColor: 'rgb(33, 156, 144, 1)',
           borderWidth: 1
         }
     ]
