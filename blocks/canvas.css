@@ -1,6 +1,4 @@
 .canvas {
-    /* background-color: rgba(58, 57, 57, .3);  */
-    /* border: 5px solid orangered; */
     margin: 0 auto;
     display: grid;
     max-width: 90vw;
@@ -30,7 +28,7 @@
 }
 
 .canvas__filter1, .canvas__filter2, .canvas__filter3{
-  height: 50px;
+  height: 35px;
   text-align: center;
 }
 

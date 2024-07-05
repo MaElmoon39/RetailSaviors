@@ -1,128 +1,58 @@
-const ctxGraphCenter = document.querySelector("#canvas__graph-center");
-const ctxGraphRight = document.querySelector("#canvas__graph-right");
-const ctxMidgraphLeft = document.querySelector("#canvas__midgraph-left");
-const ctxMidgraphCenter = document.querySelector("#canvas__midgraph-center");
-const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
-const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
+import { doughnutConfig, barConfig, scatterConfig, polarAreaConfig, radarConfig } from "../js/configsPlots.js";
 
-//Gráfico 1 Promedio de ventas
-new Chart(ctxGraphCenter, {
-  type: 'doughnut',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      }},
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+function updateCharts() {
+  document.querySelector('#loadDataButton').addEventListener('click', fetchDfData);
+  document.querySelector('#loadDataButton').addEventListener('click', fetchRfmData);
+  document.querySelector('#loadDataButton').addEventListener('click', fetchSegmentData);
 
-//Gráfico 2 Gasto total anual (USD)
-new Chart(ctxGraphRight, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1,
-      borderRadius: 7
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      }},
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+  //df_clean json file
+  async function fetchDfData(){
+    const url = 'json/df_clean.json';
+    const response = await fetch(url);
+    const dfData = await response.json();
+    return dfData;
+  };
 
-//Gráfico 3 Cantidad total de usuarios
-new Chart(ctxMidgraphLeft, {
-  type: 'scatter',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: ''
-      }
-    }
-  }
-});
+  fetchDfData().then(dfData => {
+    const continent = dfData.map(function (index) {
+      return index.continent;
+    });
+  });
 
-//Gráfico 4 Segmentos por región
-new Chart(ctxMidgraphCenter, {
-  type: 'polarArea',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+  //rfm_table json file
+  async function fetchRfmData(){
+    const url = 'json/rfm_table.json';
+    const response = await fetch(url);
+    const rfmData = await response.json();
+    return rfmData;
+  };
 
-//Gráfico 5 Ventas por continente (USD)
-new Chart(ctxBottmLeft, {
-  type: 'radar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+  fetchRfmData().then(rfmData => {
+    const continent = rfmData.map(function (index) {
+      return index.continent;
+    });
+  });
+
+  //segmentation_df json file
+  async function fetchSegmentData(){
+    const url = 'json/segmentation_df.json';
+    const response = await fetch(url);
+    const segmentData = await response.json();
+    return segmentData;
+  };
+
+  let clusterTagName = fetchSegmentData().then(segmentData => {
+    const clusterTag = segmentData.map(function (index) {
+      return index.cluster_meaning;
+    });
+  });
+
+  ctxGraphRightPlot.data.labels = continent;
+  ctxGraphRightPlot.update();
+}
 
 //Mapamundi
-fetch('https://unpkg.com/world-atlas/countries-50m.json').then((r) => r.json()).then((data) => {
+/* fetch('https://unpkg.com/world-atlas/countries-50m.json').then((r) => r.json()).then((data) => {
   const countries = ChartGeo.topojson.feature(data, data.objects.countries).features;
 
 const chart = new Chart(ctxBottmLeft.getContext("2d"), {
@@ -150,24 +80,44 @@ options: {
   }
 }
 });
-});
+}); */
+
+const ctxGraphCenter = document.querySelector("#canvas__graph-center");
+const ctxGraphRight = document.querySelector("#canvas__graph-right");
+const ctxMidgraphLeft = document.querySelector("#canvas__midgraph-left");
+const ctxMidgraphCenter = document.querySelector("#canvas__midgraph-center");
+const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
+const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
+
+const data = {
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  datasets: [{
+    label: 'df_clean data',
+    data: [18, 12, 6, 9, 12, 3, 9],
+    backgroundColor: [
+      'rgba(255, 26, 104, 0.2)'
+    ],
+    borderColor: [
+      'rgba(255, 26, 104, 1)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+//Gráfico 1 Promedio de ventas
+const ctxGraphCenterPlot = new Chart(ctxGraphCenter, doughnutConfig);
+
+//Gráfico 2 Gasto total anual (USD)
+const ctxGraphRightPlot = new Chart(ctxGraphRight, barConfig);
+
+//Gráfico 3 Cantidad total de usuarios
+const ctxMidgraphLeftPlot = new Chart(ctxMidgraphLeft, scatterConfig);
+
+//Gráfico 4 Segmentos por región
+const ctxMidgraphCenterPlot = new Chart(ctxMidgraphCenter, polarAreaConfig);
+
+//Gráfico 5 Ventas por continente (USD)*** cambiar a choroplet
+const ctxBottmLeftPlot = new Chart(ctxBottmLeft, radarConfig);
 
 //Gráfico 6 Segmentos por continente
-new Chart(ctxBottmCenter, {
-  type: 'polarArea',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+const ctxBottmCenterPlot = new Chart(ctxBottmCenter, polarAreaConfig);

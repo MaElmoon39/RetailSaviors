@@ -1,5 +1,11 @@
 [
-  {"cluster":1,"recency":5.0,"frecuency":5824.25,"monetary":64463.5625,"cluster_meaning":"platinum"},
+  {
+    "cluster":1,
+    "recency":5.0,
+    "frecuency":5824.25,
+    "monetary":64463.5625,
+    "cluster_meaning":"platinum"
+  },
   {"cluster":3,"recency":9.0,"frecuency":1022.8333333333,"monetary":174719.1833333333,"cluster_meaning":"gold"},
   {"cluster":2,"recency":47.7922912206,"frecuency":104.2285102478,"monetary":1990.7640544509,"cluster_meaning":"silver"},
   {"cluster":0,"recency":264.6739327884,"frecuency":28.5622161671,"monetary":421.9276839237,"cluster_meaning":"basic"}

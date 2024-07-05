@@ -1,5 +1,14 @@
 [
-  {"customer_id":12346,"region":"United Kingdom","continent":"Europe","recency":328,"frecuency":2,"monetary":0.0,"cluster":0,"cluster_meaning":"basic"},
+  {
+    "customer_id":12346,
+    "region":"United Kingdom",
+    "continent":"Europe",
+    "recency":328,
+    "frecuency":2,
+    "monetary":0.0,
+    "cluster":0,
+    "cluster_meaning":"basic"
+  },
   {"customer_id":12347,"region":"Iceland","continent":"Europe","recency":41,"frecuency":182,"monetary":4310.0,"cluster":2,"cluster_meaning":"silver"},
   {"customer_id":12348,"region":"Finland","continent":"Europe","recency":77,"frecuency":31,"monetary":1797.24,"cluster":2,"cluster_meaning":"silver"},
   {"customer_id":12349,"region":"Italy","continent":"Europe","recency":20,"frecuency":73,"monetary":1757.55,"cluster":2,"cluster_meaning":"silver"},
