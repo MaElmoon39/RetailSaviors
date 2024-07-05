@@ -1,5 +1,3 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-
 //Cargar archivo .csv externo
 /* document.querySelector('.upload-section__file').addEventListener('change', handleFileUpload);
 document.querySelector('.upload-section__btn').addEventListener('click', loadData);
