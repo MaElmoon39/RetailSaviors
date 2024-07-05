@@ -30,6 +30,7 @@
 .canvas__filter1, .canvas__filter2, .canvas__filter3{
   height: 35px;
   text-align: center;
+  color: grey;
 }
 
 .canvas__item {
