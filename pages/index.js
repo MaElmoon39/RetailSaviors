@@ -6,21 +6,9 @@ const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
 const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
 
 const bgColorGraph = [
-  '#EF6A32',
-  '#FFF6E9',
-  '#36A2EB',
-  '#017351',
-  '#FBBF45',
-  '#B1AFFF',
-  '#A12A5E',
-  '#03C383',
-  '#26294A',
-  '#AAD962',
-  '#FF1A68',
-  '#01545A',
-  '#ED0345',
-  '#710162',
-  '#110141'
+  '#EF6A32',  '#FFF6E9',  '#36A2EB',  '#017351',  '#FBBF45',  '#B1AFFF',
+  '#A12A5E',  '#03C383',  '#26294A',  '#AAD962',  '#FF1A68',  '#01545A',
+  '#ED0345',  '#710162',  '#110141'
 ]
 //document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
 //document.querySelector('#loadDataButton').addEventListener('click', loadDataDf);
@@ -41,13 +29,16 @@ fetch('json/df_clean.json')
 function loadDataPlot1(dataJson, plotType) {
 
   const transformData = [];
+  let quant = 0;
   for(const i of dataJson){
     const entry = transformData.find(item => item.continent == i.continent);
     if(entry){
       entry.total+=i.total
+      quant =+i;
     }else{
       transformData.push({total: i.total, continent: i.continent})
     }
+    const promSale = transformData / quant;
   }
 
   new Chart(ctxGraphCenter, {
@@ -56,10 +47,7 @@ function loadDataPlot1(dataJson, plotType) {
       labels: transformData.map(row => row.continent),
       datasets: [{
         label: 'Continente',
-        data: transformData.map(row => row.total),
-        backgroundColor: bgColorGraph,
-        borderColor: bgColorGraph,
-        borderWidth: 1
+        data: transformData.map(row => row.total)
       }]
     },
     options: {
@@ -179,27 +167,30 @@ function loadDataPlot3(dataJson, plotType) {
   });
 }
 
-//Gráfico 4 Segmentos por región
-fetch('json/df_clean.json')
+//Gráfico 4 Segmentos por continente
+fetch('json/rfm_table.json')
 .then(function(response){
   if(response.ok === true){
     return response.json();
   }
 })
 .then(function(data){
-  loadDataPlot4(data, 'polarArea');
+  loadDataPlot4(data, 'bar');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
 function loadDataPlot4(dataJson, plotType) {
+  const recencyData = dataJson.map(customer => customer.recency);
+  const frequencyData = dataJson.map(customer => customer.frequency);
+  const monetaryData = dataJson.map(customer => customer.monetary);
 
   const transformData = [];
   for(const i of dataJson){
     const entry = transformData.find(item => item.continent == i.continent);
     if(entry){
-      entry.total+=i.total
+      entry.cluster+=i.cluster
     }else{
-      transformData.push({total: i.total, continent: i.continent})
+      transformData.push({cluster: i.cluster, continent: i.continent})
     }
   }
 
@@ -207,13 +198,29 @@ function loadDataPlot4(dataJson, plotType) {
     type: plotType,
     data: {
       labels: transformData.map(row => row.continent),
-      datasets: [{
-        label: 'Continente',
-        data: transformData.map(row => row.total),
-        backgroundColor: bgColorGraph,
-        borderColor: bgColorGraph,
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: 'Recency',
+          data: recencyData,
+          backgroundColor: 'rgba(6, 208, 1, 0.3)',
+          borderColor: 'rgba(6, 208, 1, 0.7)',
+          borderWidth: 1
+        },
+        {
+          label: 'Frequency',
+          data: frequencyData,
+          backgroundColor: 'rgba(175, 71, 210, 0.3)',
+          borderColor: 'rgba(175, 71, 210, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Monetary',
+          data: monetaryData,
+          backgroundColor: 'rgba(255, 199, 237, 0.3)',
+          borderColor: 'rgba(255, 199, 237, 1)',
+          borderWidth: 1
+        }
+    ]
     },
     options: {
       responsive: true,
@@ -233,41 +240,51 @@ function loadDataPlot4(dataJson, plotType) {
 //Gráfico 5 Ventas por continente (USD)*** cambiar a choroplet
 
 
-//Gráfico 6 Segmentos por continente
-fetch('json/df_clean.json')
+//Gráfico 6 Segmentos por nivel de cliente
+fetch('json/segmentation_df.json')
 .then(function(response){
   if(response.ok === true){
     return response.json();
   }
 })
 .then(function(data){
-  loadDataPlot6(data, 'polarArea');
+  loadDataPlot6(data, 'bar');
 })
 .catch((error) => console.error("Error al cargar datos:", error));
 
 function loadDataPlot6(dataJson, plotType) {
-
-  const transformData = [];
-  for(const i of dataJson){
-    const entry = transformData.find(item => item.continent == i.continent);
-    if(entry){
-      entry.total+=i.total
-    }else{
-      transformData.push({total: i.total, continent: i.continent})
-    }
-  }
+  const labelsPlot = dataJson.map(customer => `${customer.cluster_meaning}`);
+  const recencyData = dataJson.map(customer => customer.recency);
+  const frequencyData = dataJson.map(customer => customer.frequency);
+  const monetaryData = dataJson.map(customer => customer.monetary);
 
   new Chart(ctxBottmCenter, {
     type: plotType,
     data: {
-      labels: transformData.map(row => row.continent),
-      datasets: [{
-        label: 'Continente',
-        data: transformData.map(row => row.total),
-        backgroundColor: bgColorGraph,
-        borderColor: bgColorGraph,
-        borderWidth: 1
-      }]
+      labels: labelsPlot,
+      datasets: [
+        {
+          label: 'Recency',
+          data: recencyData,
+          backgroundColor: 'rgba(238, 78, 78, 0.5)',
+          borderColor: 'rgba(238, 78, 78, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Frequency',
+          data: frequencyData,
+          backgroundColor: 'rgba(255, 199, 0, 0.5)',
+          borderColor: 'rgb(255, 199, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Monetary',
+          data: monetaryData,
+          backgroundColor: 'rgb(33, 156, 144, 0.5)',
+          borderColor: 'rgb(33, 156, 144, 1)',
+          borderWidth: 1
+        }
+    ]
     },
     options: {
       responsive: true,
