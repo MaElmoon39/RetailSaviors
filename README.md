@@ -9,7 +9,7 @@ En un mundo donde las empresas dependen cada vez más de los datos para tomar de
 
 El objetivo es desarrollar una aplicación web interactiva que permita a los científicos de datos realizar análisis de segmentación de clientes utilizando el modelo RFM (Recencia, Frecuencia, Valor Monetario). La aplicación proporcionará herramientas para cargar datos, realizar análisis exploratorio y visualizar resultados de segmentación mediante gráficos interactivos.
 
-El trabajo se compondrá de un notebook donde se realiza el preprocesamiento de los datos 🧰 aplicando técnicas para tratar números duplicados, valores nulos, creación de nuevas columnas; además, de realizar un EDA 📊 que permita obtener datos relevantes cómo cantidad de compras por mes, por horario, por día entre otros. Finalmente, se realiza un modelo no supervisado (K-means)🤖 con la intención de crear segmentos de clientes para poder retenerlos o cautivarlos mediante estrategias de marketing.
+El trabajo se compondrá de un notebook donde se realiza el preprocesamiento de los datos 🧰 aplicando técnicas para tratar números duplicados, valores nulos y creación de nuevas columnas; además, realizar un EDA 📊 que permita obtener datos relevantes como cantidad de compras por mes, por horario, por día, entre otros. Finalmente, se realiza un modelo no supervisado (K-means)🤖 con la intención de crear segmentos de clientes para poder retenerlos o cautivarlos mediante estrategias de marketing.
 
 # Conclusión 
 Se obtuvo una tabla con 4 segmentos los cuales se muestran a continuación:
