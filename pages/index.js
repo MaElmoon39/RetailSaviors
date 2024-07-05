@@ -16,11 +16,18 @@ function handleFileUpload(event) {
 
 document.querySelector('#loadDataButton').addEventListener('click', loadData);
 
-function loadData() {
+/* function loadData() {
     fetch('data/dataTest.json')
         .then(response => response.json())
         .then(data => renderChart(data))
         .catch(error => console.error('Error al cargar los datos:', error));
+} */
+
+function loadData() {
+  fetch('json/rfm_df.json')
+      .then(response => response.json())
+      .then(data => renderChart(data))
+      .catch(error => console.error('Error al cargar los datos:', error));
 }
 
 function renderChart(rfmData) {
