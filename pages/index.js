@@ -89,20 +89,6 @@ const ctxMidgraphCenter = document.querySelector("#canvas__midgraph-center");
 const ctxBottmLeft = document.querySelector("#canvas__bottm-left");
 const ctxBottmCenter = document.querySelector("#canvas__bottm-center");
 
-const data = {
-  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  datasets: [{
-    label: 'df_clean data',
-    data: [18, 12, 6, 9, 12, 3, 9],
-    backgroundColor: [
-      'rgba(255, 26, 104, 0.2)'
-    ],
-    borderColor: [
-      'rgba(255, 26, 104, 1)'
-    ],
-    borderWidth: 1
-  }]
-};
 
 //Gráfico 1 Promedio de ventas
 const ctxGraphCenterPlot = new Chart(ctxGraphCenter, doughnutConfig);

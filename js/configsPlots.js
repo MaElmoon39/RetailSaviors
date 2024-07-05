@@ -1,6 +1,7 @@
 const data = {
   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   datasets: [{
+    label: 'df_clean data',
     data: [18, 12, 6, 9, 12, 3, 9],
     backgroundColor: [
       'rgba(255, 26, 104, 0.2)'
