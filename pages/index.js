@@ -1,7 +1,5 @@
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-
 //Cargar archivo .csv externo
-document.querySelector('.upload-section__file').addEventListener('change', handleFileUpload);
+/* document.querySelector('.upload-section__file').addEventListener('change', handleFileUpload);
 document.querySelector('.upload-section__btn').addEventListener('click', loadData);
 
 function handleFileUpload(event) {
@@ -14,9 +12,9 @@ function handleFileUpload(event) {
         };
         reader.readAsText(file);
     }
-}
+} */
 
-//document.querySelector('#loadDataButton').addEventListener('click', loadData);
+document.querySelector('#loadDataButton').addEventListener('click', loadData);
 
 function loadData() {
     fetch('data/dataTest.json')

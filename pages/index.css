@@ -3,5 +3,6 @@
 @import url("../blocks/page.css");
 @import url("../blocks/header.css");
 @import url("../blocks/content.css");
+@import url("../blocks/canvas.css");
 @import url("../blocks/mediaQueries.css");
 @import url("../blocks/footer.css");

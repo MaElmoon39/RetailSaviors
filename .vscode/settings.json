@@ -114,5 +114,6 @@
         "visualizaciones",
         "visualizar",
         "vuelve"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
